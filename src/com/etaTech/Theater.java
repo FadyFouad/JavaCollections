@@ -1,14 +1,13 @@
 package com.etaTech;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /****************************************************
  *** Created by Fady Fouad on 04/05/2019 at 19:43.***
  ***************************************************/
 public class Theater {
     private final String theaterName ;
-    private List<Seat> seats=new ArrayList<>();
+    private List<Seat> seats=new LinkedList<>();
 
     public Theater(String theaterName,int numRows,int seatsPerRow) {
         this.theaterName = theaterName;
@@ -21,34 +20,60 @@ public class Theater {
         }
     }
     public boolean reserveSeat(String seatNumber){
-        Seat requestSeat = null ;
-        for (Seat seat:
-             seats) {
-            if (seat.getSeatNumber().equals(seatNumber)) {
-                requestSeat = seat;
-                break;
-            }
-        }
-        if (requestSeat==null){
-            System.out.println("no seat. ");
-            return false;
-        }else {
-            return requestSeat.reserve();
-        }
+        Seat requestSeat = new Seat(seatNumber) ;
 
+        /////////BINARY SEARCH SOURCE CODE
+//        int low = 0;
+//        int high = list.size()-1;
+//        ListIterator<? extends Comparable<? super T>> i = list.listIterator();
+//        while (low <= high) {
+//            int mid = (low + high) >>> 1;
+//            Comparable<? super T> midVal = get(i, mid);
+//            int cmp = midVal.compareTo(key);
+//
+//            if (cmp < 0)
+//                low = mid + 1;
+//            else if (cmp > 0)
+//                high = mid - 1;
+//            else
+//                return mid; // key found
+//        }
+//        return -(low + 1);  // key not found
+
+        int findSeat = Collections.binarySearch(seats,requestSeat,null);
+        if (findSeat>=0){
+            return seats.get(findSeat).reserve();
+        }else {
+            System.out.println("Seat Not Exist");
+            return false;
+        }
+//        for (Seat seat:
+//             seats) {
+//            if (seat.getSeatNumber().equals(seatNumber)) {
+//                requestSeat = seat;
+//                break;
+//            }
+//        }
+//        if (requestSeat==null){
+//            System.out.println("no seat. ");
+//            return false;
+//        }else {
+//            return requestSeat.reserve();
+//        }
     }
 
     public String getTheaterName() {
         return theaterName;
     }
-    public void getSeats(){
-        for (Seat seat:
-             seats) {
-            System.out.println(seat.getSeatNumber());
-        }
+    public List<Theater.Seat> getSeats(){
+//        for (Seat seat:
+//             seats) {
+//            System.out.println(seat.getSeatNumber());
+//        }
+        return seats;
     }
 
-    private class Seat {
+    public class Seat implements Comparable<Seat>{
         private final String seatNumber ;
         private boolean reserved = false ;
 
@@ -77,6 +102,11 @@ public class Theater {
                 return true;
             }
             return false ;
+        }
+
+        @Override
+        public int compareTo(Seat seat) {
+            return seatNumber.compareTo(seat.getSeatNumber());
         }
     }
 }
