@@ -14,13 +14,19 @@ public class Theater {
         int lastRow = 'A'+(numRows-1);
         for (char row = 'A'; row <= lastRow ; row++) {
             for (int seatNum = 1; seatNum <=seatsPerRow; seatNum++) {
-                Seat seat = new Seat(row + String.format("%02d",seatNum));
+                double price =12.0;
+                if (row<'D'&&seatNum>4&&seatNum<9){
+                    price = 15;
+                }else if (row>'F'||seatNum<4||seatNum>9){
+                    price = 10 ;
+                }
+                Seat seat = new Seat(row + String.format("%02d",seatNum),price);
                 seats.add(seat);
             }
         }
     }
     public boolean reserveSeat(String seatNumber){
-        Seat requestSeat = new Seat(seatNumber) ;
+        Seat requestSeat = new Seat(seatNumber,0) ;
 
         /////////BINARY SEARCH SOURCE CODE
 //        int low = 0;
@@ -65,7 +71,7 @@ public class Theater {
     public String getTheaterName() {
         return theaterName;
     }
-    public List<Theater.Seat> getSeats(){
+    public Collection<Seat> getSeats(){
 //        for (Seat seat:
 //             seats) {
 //            System.out.println(seat.getSeatNumber());
@@ -75,10 +81,12 @@ public class Theater {
 
     public class Seat implements Comparable<Seat>{
         private final String seatNumber ;
+        private double price ;
         private boolean reserved = false ;
 
-        public Seat(String seatNumber) {
+        public Seat(String seatNumber,double price) {
             this.seatNumber = seatNumber;
+            this.price =price;
         }
 
         public String getSeatNumber() {
@@ -88,7 +96,7 @@ public class Theater {
             if (!this.reserved){
                 this.reserved = true;
                 System.out.println("Seat "+ seatNumber+" Reserved");
-                System.out.println("Please Pay");
+                System.out.println("Please Pay"+" "+price);
                 return true;
             }else {
                 System.out.println("Sorry Seat "+seatNumber+" is reserved");
@@ -104,9 +112,14 @@ public class Theater {
             return false ;
         }
 
+        public double getPrice() {
+            return price;
+        }
+
         @Override
         public int compareTo(Seat seat) {
             return seatNumber.compareTo(seat.getSeatNumber());
         }
     }
+
 }

@@ -8,21 +8,19 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-
         Theater theater = new Theater("Fady",8,12);
         String theaterName = theater.getTheaterName();
         System.out.println(theaterName);
-//        theater.getSeats();
         List<Theater.Seat>seats = new ArrayList<>(theater.getSeats());
         List<Theater.Seat>newSeats = new ArrayList<>(seats);
-//        Collections.reverse(seats);
         Collections.shuffle(seats);
         sortList(seats);
         printList(newSeats);
         theater.reserveSeat("A01");
-//        theater.reserveSeat("A01");
         seats.get(1).reserve();
+
+
+
 
     }
     public static void printList (List<Theater.Seat>seats){
