@@ -23,6 +23,7 @@ public class Main {
         theater.reserveSeat("A01");
 //        theater.reserveSeat("A01");
         seats.get(1).reserve();
+
     }
     public static void printList (List<Theater.Seat>seats){
         for (Theater.Seat seat:
