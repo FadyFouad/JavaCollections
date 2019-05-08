@@ -8,6 +8,17 @@ import java.util.*;
 public class Theater {
     private final String theaterName ;
     private List<Seat> seats=new LinkedList<>();
+    static final Comparator<Seat>SEAT_COMPARATOR = new Comparator<Seat>() {
+        @Override
+        public int compare(Seat seat1, Seat seat2) {
+            if (seat1.getPrice()<seat2.getPrice()){
+                return -1;
+            }else if (seat1.getPrice()>seat2.getPrice()){
+                return 1;
+            }
+            return 0;
+        }
+    };
 
     public Theater(String theaterName,int numRows,int seatsPerRow) {
         this.theaterName = theaterName;

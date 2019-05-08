@@ -15,18 +15,21 @@ public class Main {
         List<Theater.Seat>newSeats = new ArrayList<>(seats);
         Collections.shuffle(seats);
         sortList(seats);
-        printList(newSeats);
+//        printList(newSeats);
         theater.reserveSeat("A01");
         seats.get(1).reserve();
 
-
-
+        List<Theater.Seat>seatList = new ArrayList<>(theater.getSeats());
+        seatList.add(theater.new Seat("B++",10));
+        seatList.add(theater.new Seat("C++",11));
+        Collections.sort(seatList,Theater.SEAT_COMPARATOR);
+        printList(seatList);
 
     }
     public static void printList (List<Theater.Seat>seats){
         for (Theater.Seat seat:
              seats) {
-            System.out.println(" "+seat.getSeatNumber());
+            System.out.println(" "+seat.getSeatNumber()+" -> "+seat.getPrice()+"$");
         }
         System.out.println("-----------------------------------------------------------");
     }
