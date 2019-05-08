@@ -8,17 +8,7 @@ import java.util.*;
 public class Theater {
     private final String theaterName ;
     private List<Seat> seats=new LinkedList<>();
-    static final Comparator<Seat>SEAT_COMPARATOR = new Comparator<Seat>() {
-        @Override
-        public int compare(Seat seat1, Seat seat2) {
-            if (seat1.getPrice()<seat2.getPrice()){
-                return -1;
-            }else if (seat1.getPrice()>seat2.getPrice()){
-                return 1;
-            }
-            return 0;
-        }
-    };
+    static final Comparator<Seat>SEAT_COMPARATOR = Theater::compare;
 
     public Theater(String theaterName,int numRows,int seatsPerRow) {
         this.theaterName = theaterName;
@@ -36,26 +26,18 @@ public class Theater {
             }
         }
     }
+
+    private static int compare(Seat seat1, Seat seat2) {
+        if (seat1.getPrice() < seat2.getPrice()) {
+            return 1;
+        } else if (seat1.getPrice() > seat2.getPrice()) {
+            return -1;
+        }
+        return 0;
+    }
+
     public boolean reserveSeat(String seatNumber){
         Seat requestSeat = new Seat(seatNumber,0) ;
-
-        /////////BINARY SEARCH SOURCE CODE
-//        int low = 0;
-//        int high = list.size()-1;
-//        ListIterator<? extends Comparable<? super T>> i = list.listIterator();
-//        while (low <= high) {
-//            int mid = (low + high) >>> 1;
-//            Comparable<? super T> midVal = get(i, mid);
-//            int cmp = midVal.compareTo(key);
-//
-//            if (cmp < 0)
-//                low = mid + 1;
-//            else if (cmp > 0)
-//                high = mid - 1;
-//            else
-//                return mid; // key found
-//        }
-//        return -(low + 1);  // key not found
 
         int findSeat = Collections.binarySearch(seats,requestSeat,null);
         if (findSeat>=0){
@@ -64,29 +46,13 @@ public class Theater {
             System.out.println("Seat Not Exist");
             return false;
         }
-//        for (Seat seat:
-//             seats) {
-//            if (seat.getSeatNumber().equals(seatNumber)) {
-//                requestSeat = seat;
-//                break;
-//            }
-//        }
-//        if (requestSeat==null){
-//            System.out.println("no seat. ");
-//            return false;
-//        }else {
-//            return requestSeat.reserve();
-//        }
     }
 
     public String getTheaterName() {
         return theaterName;
     }
+
     public Collection<Seat> getSeats(){
-//        for (Seat seat:
-//             seats) {
-//            System.out.println(seat.getSeatNumber());
-//        }
         return seats;
     }
 
