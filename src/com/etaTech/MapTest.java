@@ -13,7 +13,7 @@ public class MapTest {
         langs.put("Java"," Great Language");
         langs.put("Kotlin"," Based on Java");
         langs.put("Go"," Functional programing lang");
-        langs.put("Pyathon"," Simple lang");
+        langs.put("Python"," Simple lang");
 
         System.out.println(langs.get("Go"));
         langs.put("Go"," Duplpicated value");
@@ -26,6 +26,11 @@ public class MapTest {
             System.out.println(langs.get("Go"));
             System.out.println("Go Added :)");
         }
+
+        langs.remove("Python");
+        langs.replace("Go","Amazing Lang");
+
+
         System.out.println("-----------------------------Map Content ----------------------");
         for (String s:
              langs.keySet()) {
