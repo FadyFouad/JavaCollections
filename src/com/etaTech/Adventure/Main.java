@@ -26,21 +26,17 @@ public class Main {
         locationMap.get(1).addExit("E", 3);
         locationMap.get(1).addExit("S", 4);
         locationMap.get(1).addExit("N", 5);
-        locationMap.get(1).addExit("Q", 0);
-
+//        locationMap.get(1).addExit("Q", 0);
         locationMap.get(2).addExit("N", 5);
-        locationMap.get(2).addExit("Q", 0);
-
+//        locationMap.get(2).addExit("Q", 0);
         locationMap.get(3).addExit("W", 1);
-        locationMap.get(3).addExit("Q", 0);
-
+//        locationMap.get(3).addExit("Q", 0);
         locationMap.get(4).addExit("N", 1);
         locationMap.get(4).addExit("W", 2);
-        locationMap.get(4).addExit("Q", 0);
-
+//        locationMap.get(4).addExit("Q", 0);
         locationMap.get(5).addExit("S", 1);
         locationMap.get(5).addExit("W", 2);
-        locationMap.get(5).addExit("Q", 0);
+//        locationMap.get(5).addExit("Q", 0);
 
         int location = 1;
         while (true) {
@@ -66,8 +62,5 @@ public class Main {
             }
         }
 
-        for (int i : locationMap.keySet()) {
-//            System.out.println(locationMap.get(i).getDesc());
-        }
     }
 }
