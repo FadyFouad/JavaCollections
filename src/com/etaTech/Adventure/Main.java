@@ -1,6 +1,7 @@
 package com.etaTech.Adventure;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,6 +14,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("\n============================= Adventure =========================\n");
         Scanner scanner = new Scanner(System.in);
+
+        LinkedHashSet linkedHashSet ;
 
         locationMap.put(0, new Location(0, "Out Of Game"));
         locationMap.put(1, new Location(1, "room 1"));
