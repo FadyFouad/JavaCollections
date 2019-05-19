@@ -1,7 +1,6 @@
 package com.etaTech.Adventure;
 
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -15,30 +14,29 @@ public class Main {
         System.out.println("\n============================= Adventure =========================\n");
         Scanner scanner = new Scanner(System.in);
 
-        LinkedHashSet linkedHashSet ;
-
-        locationMap.put(0, new Location(0, "Out Of Game"));
-        locationMap.put(1, new Location(1, "room 1"));
-        locationMap.put(2, new Location(2, "room 2"));
-        locationMap.put(3, new Location(3, "room 3"));
-        locationMap.put(4, new Location(4, "room 4"));
-        locationMap.put(5, new Location(5, "room 4+"));
-        locationMap.put(5, new Location(5, "room 5"));
-
-        locationMap.get(1).addExit("W", 2);
-        locationMap.get(1).addExit("E", 3);
-        locationMap.get(1).addExit("S", 4);
-        locationMap.get(1).addExit("N", 5);
-
-        locationMap.get(2).addExit("N", 5);
-
-        locationMap.get(3).addExit("W", 1);
-
-        locationMap.get(4).addExit("N", 1);
-        locationMap.get(4).addExit("W", 2);
-
-        locationMap.get(5).addExit("S", 1);
-        locationMap.get(5).addExit("W", 2);
+        Map<String ,Integer>tempExit = new HashMap<>();
+        locationMap.put(0, new Location(0, "Out Of Game",tempExit));
+        tempExit = new HashMap<>();
+        tempExit.put("W", 2);
+        tempExit.put("E", 3);
+        tempExit.put("S", 4);
+        tempExit.put("N", 5);
+        locationMap.put(1, new Location(1, "room 1",tempExit));
+        tempExit = new HashMap<>();
+        tempExit.put("N", 5);
+        locationMap.put(2, new Location(2, "room 2",tempExit));
+        tempExit = new HashMap<>();
+        tempExit.put("W", 1);
+        locationMap.put(3, new Location(3, "room 3",tempExit));
+        tempExit = new HashMap<>();
+        tempExit.put("N", 1);
+        tempExit.put("W", 2);
+        locationMap.put(4, new Location(4, "room 4",tempExit));
+        locationMap.put(5, new Location(5, "room 4+",tempExit));
+        tempExit = new HashMap<>();
+        tempExit.put("S", 1);
+        tempExit.put("W", 2);
+        locationMap.put(5, new Location(5, "room 5",tempExit));
 
 
         Map<String ,String> vocap = new HashMap();

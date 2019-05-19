@@ -25,15 +25,15 @@ public class Location {
         return new HashMap<>(exits);//cant change outside this class
     }
 
-    public Location(int locationID, String desc) {
+    public Location(int locationID, String desc,Map<String ,Integer>exits) {
         this.locationID = locationID;
         this.desc = desc;
-        this.exits = new HashMap<>();
+        this.exits = new HashMap<>(exits);
         this.exits.put("Q", 0);
     }
 
-    public void addExit(String exitDescrption , int location){
-        exits.put(exitDescrption,location);
-    }
+//    public void addExit(String exitDescrption , int location){
+//        exits.put(exitDescrption,location);
+//    }
 
 }
