@@ -17,7 +17,7 @@ public class Animal {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
 //        Animal animal = (Animal) o;
@@ -31,4 +31,8 @@ public class Animal {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
 }
