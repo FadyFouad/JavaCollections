@@ -8,7 +8,7 @@ import java.util.Set;
  *** Created by Fady Fouad on 5/22/2019 at 15:46.***
  ***************************************************/
 
-public final class HeavenlyBody {
+public class HeavenlyBody {
 
     private final String name;
     private final double orbitalPeride ;
@@ -40,9 +40,9 @@ public final class HeavenlyBody {
         return type;
     }
 
-    public boolean addMoon (HeavenlyBody moon){
-        if (moon.getType()==BodyType.MOON) {
-            return this.sats.add(moon);
+    public boolean addSat(HeavenlyBody body){
+        if (body.getType()==BodyType.MOON) {
+            return this.sats.add(body);
         }else
             return false;
     }
