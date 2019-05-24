@@ -13,24 +13,24 @@ public class Main {
     private static Set<HeavenlyBody> plants = new HashSet<>();
 
     public static void main(String[] args) {
-        HeavenlyBody temp = new HeavenlyBody("Mercury", 88);
+        HeavenlyBody temp = new HeavenlyBody("Mercury", 88, HeavenlyBody.BodyType.PLANET);
         solarSys.put(temp.getName(), temp);
         plants.add(temp);
-        HeavenlyBody tempMoon = new HeavenlyBody("Mercury_Moon",27);
+        HeavenlyBody tempMoon = new HeavenlyBody("Mercury_Moon",27, HeavenlyBody.BodyType.MOON);
         solarSys.put(tempMoon.getName(),tempMoon);
         temp.addMoon(tempMoon);
 
-        temp = new HeavenlyBody("Venus", 225);
+        temp = new HeavenlyBody("Venus", 225, HeavenlyBody.BodyType.PLANET);
         solarSys.put(temp.getName(), temp);
         plants.add(temp);
 
-        temp = new HeavenlyBody("Earth", 365);
+        temp = new HeavenlyBody("Earth", 365,HeavenlyBody.BodyType.PLANET);
         solarSys.put(temp.getName(), temp);
         plants.add(temp);
-        tempMoon = new HeavenlyBody("Earth_Moon",27);
+        tempMoon = new HeavenlyBody("Earth_Moon",27,HeavenlyBody.BodyType.MOON);
         solarSys.put(tempMoon.getName(),tempMoon);
         temp.addMoon(tempMoon);
-        tempMoon = new HeavenlyBody("Moon2", 27);
+        tempMoon = new HeavenlyBody("Moon2", 27, HeavenlyBody.BodyType.MOON);
         solarSys.put(tempMoon.getName(), tempMoon);
         temp.addMoon(tempMoon);
 
@@ -58,7 +58,7 @@ public class Main {
             System.out.println("\t"+moon.getName());
         }
 
-        HeavenlyBody pluto = new HeavenlyBody("Earth",364);
+        HeavenlyBody pluto = new HeavenlyBody("Earth",364, HeavenlyBody.BodyType.PLANET);
         plants.add(pluto);
 
         System.out.println("Plants...");

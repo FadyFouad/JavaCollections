@@ -13,11 +13,19 @@ public final class HeavenlyBody {
     private final String name;
     private final double orbitalPeride ;
     private final Set<HeavenlyBody> sats;
+    private final BodyType type;
 
-    public HeavenlyBody(String name, double orbitalPeride) {
+    public enum BodyType {
+        STAR ,
+        MOON ,
+        PLANET
+    }
+
+    public HeavenlyBody(String name, double orbitalPeride,BodyType type) {
         this.name = name;
         this.orbitalPeride = orbitalPeride;
         this.sats = new HashSet<>();
+        this.type=type;
     }
 
     public String getName() {
@@ -28,8 +36,15 @@ public final class HeavenlyBody {
         return orbitalPeride;
     }
 
+    public BodyType getType() {
+        return type;
+    }
+
     public boolean addMoon (HeavenlyBody moon){
-       return this.sats.add(moon);
+        if (moon.getType()==BodyType.MOON) {
+            return this.sats.add(moon);
+        }else
+            return false;
     }
 
     public Set<HeavenlyBody> getSats() {
@@ -49,5 +64,15 @@ public final class HeavenlyBody {
     public int hashCode() {
         System.out.println("hashCode : Called ");
         return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "HeavenlyBody{" +
+                "name='" + name + '\'' +
+                ", orbitalPeride=" + orbitalPeride +
+                ", sats=" + sats +
+                ", type=" + type +
+                '}';
     }
 }
