@@ -8,7 +8,7 @@ import java.util.Set;
  *** Created by Fady Fouad on 5/22/2019 at 15:46.***
  ***************************************************/
 
-public class HeavenlyBody {
+public abstract class HeavenlyBody {
 
     private final String name;
     private final double orbitalPeride ;
@@ -62,7 +62,7 @@ public class HeavenlyBody {
 
     @Override
     public int hashCode() {
-        System.out.println("hashCode : Called ");
+//        System.out.println("hashCode : Called ");
         return name.hashCode();
     }
 

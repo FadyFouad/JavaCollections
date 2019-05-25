@@ -37,14 +37,16 @@ public class Main {
         System.out.println("plants... ");
         for (HeavenlyBody plants :
                 plants) {
-            System.out.println("\t"+plants.getName());
+            System.out.println(plants);
         }
+
         HeavenlyBody body = solarSys.get("Mercury");
         System.out.println(body.getName());
         for (HeavenlyBody body1 :
                 body.getSats()) {
-            System.out.println("\t"+body1.getName());
+            System.out.println(body1);
         }
+
 
         Set<HeavenlyBody> moons = new HashSet<>();
         for (HeavenlyBody plant :
@@ -55,7 +57,7 @@ public class Main {
         System.out.println("Moons...");
         for (HeavenlyBody moon :
                 moons) {
-            System.out.println("\t"+moon.getName());
+            System.out.println(moon);
         }
 
         HeavenlyBody pluto = new Planet("Earth",364);
