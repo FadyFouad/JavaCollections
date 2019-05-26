@@ -8,11 +8,11 @@ public class Challenge {
     public static void main(String[] args) {
         System.out.println("===================Challenge=================");
 
-        HeavenlyBody body = new HeavenlyBody("Earth",360, HeavenlyBody.BodyType.PLANET);
-        HeavenlyBody moon = new HeavenlyBody("Moon",360, HeavenlyBody.BodyType.MOON);
-        System.out.println(body.toString());
-        body.addSat(moon);
-        System.out.println(body.toString());
+//        HeavenlyBody body = new HeavenlyBody("Earth",360, HeavenlyBody.BodyType.PLANET);
+//        HeavenlyBody moon = new HeavenlyBody("Moon",360, HeavenlyBody.BodyType.MOON);
+//        System.out.println(body.toString());
+//        body.addSat(moon);
+//        System.out.println(body.toString());
 
     }
 }
